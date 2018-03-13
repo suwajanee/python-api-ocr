@@ -16,17 +16,18 @@ class Menu(Resource):
 		return SequenceMatcher(None, a, b).ratio()
 
 	def get(self, menu_image):
-		firebases = firebase.FirebaseApplication('https://test-82b73.firebaseio.com/')
-		result = firebases.get('/menues', None)
+		# firebases = firebase.FirebaseApplication('https://test-82b73.firebaseio.com/')
+		# result = firebases.get('/menues', None)
 
-		keys = result.keys()
+		# keys = result.keys()
+		var menu = ['ข้าวมันไก่','ผัดกระเพราหมู','ข้าวผัดไก่']
 		max_ratio = 0
 
 		a = menu_image
 		# print(type(a))
 		data = {}
 		for key in keys:
-			result2 = firebases.get('/menues', key)
+			result2 = firebases.get('/menues', menu)
 			word = result2["nameThai"]
 			ratio = self.similar(a, word)
 			# print(word)
